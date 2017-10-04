@@ -1,0 +1,11 @@
+Given the situation, constraints, and assumptions, I've assumed implemented a naive solution where the drone with the least distance left to travel back to the depot location is assigned the package with the closest deadline. The program will give assignments to all droids of all packages at a given time.
+
+Packages have been sorted based on the deadline times, as priority is given to packages that are expected sooner.
+
+With the assumption, that a drone has to return the depot in order to make a package delivery and all drones travel at the same fixed speed of 50km/h, without considering environmental factors, the determining factor would then be a drone's distance left to travel. The distance left to travel would be the distance between the drone's current location and the depot location, if the drone does not have a package, or the distance between the drone's current location and the package destination plus the distance from the destination back to the depot location, if the drone has a package.
+
+With the information, I've then sorted all the data to be queues. Given the desired return value, I felt there was a need to sort through both datasets first in order to produce the results.
+
+The solution I've implemented would not work if handling thousands of jobs per second. As none of this information is persisted. I would have to persist and update information accordingly in order to properly implement this in order to prevent confusion, overlap, and in order produce accurate information. This solution relies heavily on sorting through all of the data of the drones and the packages which is not ideal and because of this I've also had to make unnecessary copy assignments.
+
+With more data, the performance of this solution would be negatively impacted. A better solution would be to recursively find the minimum and pull from the dataset, so the package with highest priority and the drone with the least distance left to travel.
